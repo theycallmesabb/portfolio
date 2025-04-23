@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Certificates</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            background: linear-gradient(to bottom, #000080, #000040); /* Navy blue gradient */
+            color: #fff; /* White text for better contrast */
+            display: flex;
+            flex-direction: column; /* Stack header and content */
+            align-items: center;
+            min-height: 100vh;
+            padding-top: 60px; /* Space for the fixed header */
+            box-sizing: border-box;
+        }
+
+        .page-header {
+            background-color: transparent; /* Make header background transparent */
+            color: #fff;
+            padding: 15px 30px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100; /* Ensure it stays on top */
+        }
+
+        .page-header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 5px; /* Add some space below the text for the glow */
+        }
+
+        .page-header h1::before {
+            content: "";
+            position: absolute;
+            left: -10px;
+            right: -10px;
+            bottom: -2px; /* Adjust to position the glow under the text */
+            height: 10px;
+            background: rgba(255, 255, 0, 0.7); /* Yellow with some transparency */
+            filter: blur(8px);
+            z-index: -1;
+        }
+
+        .certificates-section {
+            background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent white for content background */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 90%; /* Adjust as needed */
+            max-width: 1000px; /* Maximum width for the grid */
+            margin-top: 20px; /* Space below the header */
+        }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+            gap: 20px; /* Spacing between grid items */
+            margin-top: 20px;
+        }
+
+        .certificate-item {
+            background-color: rgba(255, 255, 255, 0.05); /* Subtle background for each item */
+            border-radius: 5px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .certificate-item img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            max-height: 200px; /* Adjust as needed */
+            object-fit: contain; /* Fit image within the box */
+        }
+
+        .certificate-item h3 {
+            font-size: 1em;
+            color: #eee;
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <h1>Certificates</h1>
+    </header>
+
+    <section class="certificates-section">
+        <div class="certificates-grid">
+            </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const certificatesGrid = document.querySelector('.certificates-grid');
+
+            // --- Replace with your actual certificate data (including name and link) ---
+            const certificateData = [
+                { src: "./assets/images/certificates/Azure.png", link: 'https://learn.microsoft.com/api/credentials/share/en-us/kamaljeet-9648/D6EA93C436CEBD0C?sharingId=EDB43EFDB96528D', name: 'Microsoft Certified Cloud Administrator' },
+                { src: "./assets/images/certificates/hackerrank.png", link: 'https://www.hackerrank.com/certificates/994fd4ae67da', name: 'software Engineer Intern' },
+                { src: "./assets/images/certificates/social.png", link: 'https://drive.google.com/file/d/1YZwWQNDecfNTtEVDL0cQvhpkJzbWPHny/view?usp=sharing', name: 'Advanced DSA Training' },
+                { src: "./assets/images/certificates/infineon.png", link: 'https://drive.google.com/file/d/17sJsV-IBsuBUd9u0U6gDVJvotN49NYDN/view?usp=sharing', name: 'Infineon Technology Hackathon' },
+                { src: "./assets/images/certificates/hackerrank.png", link: 'https://www.hackerrank.com/certificates/9348312c7051', name: 'Python Basics' },
+                { src: "./assets/images/certificates/arena.png", link: 'https://drive.google.com/file/d/10OTSc3hXae8r6NwUK5IhnfsVs8Jm33ZD/view?usp=sharing', name: 'Web-A-Thon' },
+                { src: "./assets/images/certificates/tcs.png", link: 'https://drive.google.com/file/d/12FiPl_0FfXEJE5s6CjJddbvZ59yPOosQ/view?usp=sharing', name: 'TCS iQN' },
+                { src: "./assets/images/certificates/coursera.png", link: 'https://drive.google.com/file/d/1osaBYIe3je0bR2p7dJ0GnP-_mSQbaMNe/view?usp=sharing', name: 'Algorithms on Strings' },
+                { src: "./assets/images/certificates/coursera.png", link: 'https://drive.google.com/file/d/1qKgzlPBBZqhoBpO3oFrv37UemIIlX_Cq/view?usp=sharing', name: 'Approximation Algorithms' },
+                { src: "./assets/images/certificates/coursera.png", link: 'https://drive.google.com/file/d/1Hgz4rJJXhNsLTIhL3Ou3xmrALq407EP7/view?usp=sharing', name: 'Build AI App' },
+                { src: "./assets/images/certificates/coursera.png", link: 'https://drive.google.com/file/d/1gSwQfN2Qe8IPJBwIaolA5X8gMfwEonRa/view?usp=sharing', name: 'Prompt Engineering' },
+                { src: "./assets/images/certificates/coursera.png", link: 'https://drive.google.com/file/d/1-Q7NwmglkoXOs9QqMmQloXYLcF7aiHOU/view?usp=sharing', name: 'Dynamic Programming' },
+                { src: "./assets/images/certificates/coursera.png", link: 'https://drive.google.com/file/d/1KER07GQ4Ot5cOO8bTuKmDfEPyZYjVPgp/view?usp=sharing', name: 'Introduction to LLM' },
+                { src: "./assets/images/certificates/coursera.png", link: 'https://drive.google.com/file/d/1pxf00Ux8tdPFYpr9QC2-qI81AxmHjBRW/view?usp=sharing', name: 'Advanced Data Analysis' },
+                { src: "./assets/images/certificates/coursera.png", link: 'https://drive.google.com/file/d/1dYR0DPEKIaru-JzzqQ_2cM1lNsZ013cO/view?usp=sharing', name: 'ChatGPT Playground' },
+
+                // Add more certificates here with their names
+            ];
+            // ----------------------------------------------------------------------
+            
+            certificateData.forEach(certificate => {
+                const certificateItem = document.createElement('div');
+                certificateItem.classList.add('certificate-item');
+
+                const img = document.createElement('img');
+                img.src = certificate.src;
+                img.alt = certificate.name || 'Certificate';
+                img.style.cursor = 'pointer';
+                img.addEventListener('click', () => {
+                    window.open(certificate.link, '_blank');
+                });
+
+                const nameElement = document.createElement('h3');
+                nameElement.classList.add('certificate-name');
+                nameElement.textContent = certificate.name || 'Certificate';
+
+                certificateItem.appendChild(img);
+                certificateItem.appendChild(nameElement);
+                certificatesGrid.appendChild(certificateItem);
+            });
+        });
+    </script>
+</body>
+</html>

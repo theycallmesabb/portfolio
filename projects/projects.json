@@ -1,0 +1,66 @@
+[
+  
+  {
+    "name": "Portfolio Website",
+    "desc": "Personal Portfolio Website. Don't Need Much Info About It, Just Scroll Down. You're Here Only!",
+    "image": "port",
+    "category": "basicweb",
+    "links": {
+      "view": "#",
+      "code": "#"
+    }
+  },
+  {
+    "name": "Sorting Visualizer",
+    "desc": "A web app to visualize the complex sorting algorithms.",
+    "image": "sorting",
+    "category": "basicweb",
+    "links": {
+      "view": "https://sorting-visualizer-ky.vercel.app/",
+      "code": "https://github.com/Kamaljeet-01/Sorting-Visualizer"
+    }
+  },
+  {
+    "name": "Space Connect",
+    "desc": "A web app which fetch POTD from NASA's APOD API and display it.",
+    "image": "space",
+    "category": "basicweb",
+    "links": {
+      "view": "https://space-connect.vercel.app/",
+      "code": "https://github.com/Kamaljeet-01/space-connect"
+    }
+  },
+  {
+    "name": "Taskify",
+    "desc": "A CLI application which manages the task in CLI mode. Made with Golang, MongoDB and Cobra",
+    "image": "taskify",
+    "category": "#",
+    "links": {
+      "view": "#",
+      "code": "https://github.com/Kamaljeet-01/Taskify"
+    }
+  },
+  {
+    "name": "Snake Game",
+    "desc": "Basic Snake ladder Game",
+    "image": "game",
+    "category": "#",
+    "links": {
+      "view": "#",
+      "code": "https://github.com/Kamaljeet-01/SnakeGame"
+    }
+  }
+  ,
+
+  {
+    "name": "Student Manager",
+    "desc": "Basic Student Management System built using Golang",
+    "image": "image",
+    "category": "#",
+    "links": {
+      "view": "#",
+      "code": "#"
+    }
+  }
+
+]
