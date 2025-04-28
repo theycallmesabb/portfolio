@@ -1,145 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Certificates</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            margin: 0;
-            background: linear-gradient(to bottom, #000080, #000040); /* Navy blue gradient */
-            color: #fff; /* White text for better contrast */
-            display: flex;
-            flex-direction: column; /* Stack header and content */
-            align-items: center;
-            min-height: 100vh;
-            padding-top: 60px; /* Space for the fixed header */
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Certificates</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: linear-gradient(to bottom, #000080, #000040);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding-top: 80px;
+      overflow-x: hidden;
+      box-sizing: border-box;
+      animation: fadeInBody 1s ease forwards;
+    }
 
-        .page-header {
-            background-color: transparent; /* Make header background transparent */
-            color: #fff;
-            padding: 15px 30px;
-            text-align: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 100; /* Ensure it stays on top */
-        }
+    @keyframes fadeInBody {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
 
-        .page-header h1 {
-            font-size: 2.5em;
-            margin: 0;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 5px; /* Add some space below the text for the glow */
-        }
+    .page-header {
+      background: transparent;
+      color: #fff;
+      padding: 15px 30px;
+      text-align: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      animation: float 3s ease-in-out infinite;
+    }
 
-        .page-header h1::before {
-            content: "";
-            position: absolute;
-            left: -10px;
-            right: -10px;
-            bottom: -2px; /* Adjust to position the glow under the text */
-            height: 10px;
-            background: rgba(255, 255, 0, 0.7); /* Yellow with some transparency */
-            filter: blur(8px);
-            z-index: -1;
-        }
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+      100% { transform: translateY(0); }
+    }
 
-        .certificates-section {
-            background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent white for content background */
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            width: 90%; /* Adjust as needed */
-            max-width: 1000px; /* Maximum width for the grid */
-            margin-top: 20px; /* Space below the header */
-        }
+    .page-header h1 {
+      font-size: 2.5em;
+      margin: 0;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
 
-        .certificates-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
-            gap: 20px; /* Spacing between grid items */
-            margin-top: 20px;
-        }
+    .page-header h1::before {
+      content: "";
+      position: absolute;
+      left: -10px;
+      right: -10px;
+      bottom: -2px;
+      height: 10px;
+      background: rgba(255, 255, 0, 0.6);
+      filter: blur(8px);
+      z-index: -1;
+    }
 
-        .certificate-item {
-            background-color: rgba(255, 255, 255, 0.05); /* Subtle background for each item */
-            border-radius: 5px;
-            padding: 15px;
-            text-align: center;
-        }
+    .certificates-section {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      width: 90%;
+      max-width: 1000px;
+      margin-top: 20px;
+      animation: fadeInUp 1.5s ease forwards;
+    }
 
-        .certificate-item img {
-            max-width: 100%;
-            height: auto;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            cursor: pointer;
-            max-height: 200px; /* Adjust as needed */
-            object-fit: contain; /* Fit image within the box */
-        }
+    @keyframes fadeInUp {
+      0% { transform: translateY(30px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
 
-        .certificate-item h3 {
-            font-size: 1em;
-            color: #eee;
-            margin-top: 10px;
-            margin-bottom: 0;
-        }
-    </style>
+    .certificates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+
+    .certificate-item {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 15px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: pointer;
+      animation: fadeInCard 1.5s ease forwards;
+    }
+
+    .certificate-item:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(255, 255, 0, 0.4);
+    }
+
+    .certificate-item:active {
+      transform: scale(0.98);
+    }
+
+    @keyframes fadeInCard {
+      0% { opacity: 0; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .certificate-item img {
+      max-width: 100%;
+      height: auto;
+      border: 2px solid #fff;
+      border-radius: 8px;
+      max-height: 200px;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    .certificate-item img:hover {
+      transform: scale(1.03);
+    }
+
+    .certificate-item h3 {
+      font-size: 1em;
+      color: #eee;
+      margin-top: 10px;
+      margin-bottom: 0;
+      font-weight: 500;
+    }
+  </style>
 </head>
 <body>
-    <header class="page-header">
-        <h1>Certificates</h1>
-    </header>
 
-    <section class="certificates-section">
-        <div class="certificates-grid">
-            </div>
-    </section>
+  <header class="page-header">
+    <h1>Certificates</h1>
+  </header>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const certificatesGrid = document.querySelector('.certificates-grid');
+  <section class="certificates-section">
+    <div class="certificates-grid"></div>
+  </section>
 
-            // --- Replace with your actual certificate data (including name and link) ---
-            const certificateData = [
-                { src: "./assets/images/certificates/coursera.png", link: 'https://drive.google.com/file/d/1amnPCy9F-sgh_cF_JHQHQn9NzIvyib8v/view?usp=drive_link', name: ' Dynamic Programming ' },
-                { src: "./assets/images/certificates/coursera.png", link: 'https://drive.google.com/file/d/1afLQaoEfCob2yjjyLoMSO0K9C7hgIXB4/view?usp=drive_link', name: 'Approximation Algorithms' },
-                { src: "./assets/images/certificates/coursera.png", link: 'https://drive.google.com/file/d/1Di5BQh4ROHBl7d5t0CpUtNwq3T7k7rHq/view?usp=drive_link', name: 'Learn To Code with AI' },
-                { src: "./assets/images/certificates/coursera.png", link: 'https://drive.google.com/file/d/1h_zrgjHQrMX734jF0iNplkZOG6MASXHx/view?usp=sharing', name: 'Algorithm on string ' },
-                { src: "./assets/images/certificates/coursera.png", link: 'https://drive.google.com/file/d/1wzyd-RR2gmow4ZEQCwuHiGlDLkPG6XBq/view?usp=sharing', name: 'Gen AI For Everyone' },
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const certificatesGrid = document.querySelector('.certificates-grid');
 
-                // Add more certificates here with their names
-            ];
-            // ----------------------------------------------------------------------
-            
-            certificateData.forEach(certificate => {
-                const certificateItem = document.createElement('div');
-                certificateItem.classList.add('certificate-item');
+      const certificateData = [
+        { src: "./assets/images/certificates/azures.png", link: 'https://drive.google.com/file/d/1snOLHD4DyomDuu2TyHx9JtBY7GHQL6a2/view?usp=sharing', name: 'Microsoft Certified: Azure Administrator Associate' },
+        { src: "./assets/images/certificates/coursera.png", link: 'https://drive.google.com/file/d/1amnPCy9F-sgh_cF_JHQHQn9NzIvyib8v/view?usp=drive_link', name: 'Dynamic Programming' },
+        { src: "./assets/images/certificates/coursera.png", link: 'https://drive.google.com/file/d/1afLQaoEfCob2yjjyLoMSO0K9C7hgIXB4/view?usp=drive_link', name: 'Approximation Algorithms' },
+        { src: "./assets/images/certificates/coursera.png", link: 'https://drive.google.com/file/d/1Di5BQh4ROHBl7d5t0CpUtNwq3T7k7rHq/view?usp=drive_link', name: 'Learn To Code with AI' },
+        { src: "./assets/images/certificates/coursera.png", link: 'https://drive.google.com/file/d/1h_zrgjHQrMX734jF0iNplkZOG6MASXHx/view?usp=sharing', name: 'Algorithm on String' },
+        { src: "./assets/images/certificates/coursera.png", link: 'https://drive.google.com/file/d/1wzyd-RR2gmow4ZEQCwuHiGlDLkPG6XBq/view?usp=sharing', name: 'Gen AI For Everyone' }
+      ];
 
-                const img = document.createElement('img');
-                img.src = certificate.src;
-                img.alt = certificate.name || 'Certificate';
-                img.style.cursor = 'pointer';
-                img.addEventListener('click', () => {
-                    window.open(certificate.link, '_blank');
-                });
+      certificateData.forEach((certificate, index) => {
+        const certificateItem = document.createElement('div');
+        certificateItem.classList.add('certificate-item');
+        certificateItem.style.animationDelay = `${index * 0.2}s`;
 
-                const nameElement = document.createElement('h3');
-                nameElement.classList.add('certificate-name');
-                nameElement.textContent = certificate.name || 'Certificate';
-
-                certificateItem.appendChild(img);
-                certificateItem.appendChild(nameElement);
-                certificatesGrid.appendChild(certificateItem);
-            });
+        const img = document.createElement('img');
+        img.src = certificate.src;
+        img.alt = certificate.name || 'Certificate';
+        img.addEventListener('click', () => {
+          window.open(certificate.link, '_blank');
         });
-    </script>
+
+        const nameElement = document.createElement('h3');
+        nameElement.textContent = certificate.name || 'Certificate';
+
+        certificateItem.appendChild(img);
+        certificateItem.appendChild(nameElement);
+        certificatesGrid.appendChild(certificateItem);
+      });
+    });
+  </script>
+
 </body>
 </html>
